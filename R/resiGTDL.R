@@ -1,41 +1,3 @@
-#'@name resi.GTDL
-#'@title Residual value of the GTDL distribution 
-#'
-#'
-#'@param t non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.
-#'@param param These are the lambda, alpha and gamma parameters of the GTDL distribution.
-#'@param censura absence of the occurrence of the event at the time of analysis.
-
-#'
-#'@describe
-#'
-#'
-#'
-#'
-#'@author Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
-#'@author Luciano S. Santos \email{lucianno0800@gmail.com}
-#'
-#'
-#'@examples
-#'
-#'data("hepatitis")
-#'x <- quantile.GTDL(t = hepatitis$t,param = c(1,-0.05,-1),
-#'              censura = hepatistis$censured)
-#'envole.GTDL(x)
-
-#'@rdname resi.GTDL
-#'@export
-
-quantile.GTDL <- function(t,param,censura){
-  conf <- dGTDL(t=t,param=param)
-  qr <- qnorm(censura* (1 - conf) + (1-censura)*runif(length(t),1-conf))
-  return(qr)
-}
-
-
-#'@rdname resi.GTDL
-#'@export
-
 envelope.GTDL <- function(x){
   U	         <- x
   n	         <- length(x)
@@ -65,4 +27,47 @@ envelope.GTDL <- function(x){
   par(new = T)
   plot(xq2, d22, type = "l", ylim = fy, xlab = "", ylab = "", lwd=1.2)
 }
+
+#'@name resi.GTDL
+#'@title Residual value of the GTDL distribution 
+#'
+#'
+#'@param t non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.
+#'@param param These are the lambda, alpha and gamma parameters of the GTDL distribution.
+#'@param censura absence of the occurrence of the event at the time of analysis.
+#'
+#'@describe
+#'
+#'
+#'
+#'
+#'@author Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
+#'@author Luciano S. Santos \email{lucianno0800@gmail.com}
+#'
+#'
+#'@examples
+#'
+#'data(lung)
+#'q.residual <- quantile.GTDL(t = hepatitis$t,param = c(1,-0.05,-1),
+#'              censura = hepatistis$censured)
+#' plot(q.residual, ylim=c(min(q.residual)-0.5,max(q.residual)+0.5) )
+#' abline(h=c(-3,0,3),tly=2)
+#' envolepe.GTDL(q.residual)
+
+#'@rdname resi.GTDL
+#'@export
+quantile.GTDL <- function(t,censura,formula,param.hat){
+  p <-
+  for(){
+    gamma.i <- X%*%para.hat[3:p]
+    para.i <- c(para.hat[1:2],gamma.i)
+  conf.i <- dGTDL(t=t[i],param=param.i)
+  qr[i] <- qnorm(censura[i]* (1 - conf.i) + (1-censura[i])*runif(length(t[i]),1-conf.i) )
+    }
+  return(qr)
+}
+
+
+#'@rdname resi.GTDL
+#'@export
 
