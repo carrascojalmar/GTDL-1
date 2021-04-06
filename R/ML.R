@@ -35,9 +35,10 @@ like2 <- function(t,formula,censur,para){
 #'formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
 #'cesnur <- ifelse(lung$status==1,0,1)
 #'star <- c(0.03,0.05,-1,0.7,2,-0.1)
-#'maxGTDL(t = lung$time,start = start,
+#'model <- maxGTDL(t = lung$time,start = start,
 #'                      formula = formula,
 #'                      censur = censur)
+#'model 
 
 #'@rdname max.GTDL
 #'@export
