@@ -34,7 +34,7 @@ quantile.GTDL <- function(t,formula,param,censura){
   for(i in 1:length(t)){
     gamma.aux <-  x[i,]%*%matrix(param[3:(p+2)])
     param.aux <- c(param[1:2],gamma.aux)
-    conf[i] <- dGTDL(t=t[i],param=param.aux)  
+    conf[i] <- reability.GTDL(t=t[i],param=param.aux)  
   }
   
   qr <- qnorm(censura* (1 - conf) + (1-censura)*runif(length(t),1-conf))
